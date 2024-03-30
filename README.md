@@ -34,3 +34,9 @@ bin/kafka-server-start.sh config/server.properties
 
 ### 启动python脚本
 send.py
+
+### 停止
+- 停止storm
+jps，kill
+lsof -i :8080，kill
+- 停止zookeeper zkServer.sh stop
