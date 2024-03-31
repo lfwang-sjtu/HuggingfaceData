@@ -3,6 +3,16 @@
 ### 启动所有主机
 zzzzzz
 
+### 登陆主机
+```
+ssh root@10.119.12.217
+```
+
+### 传输文件
+```
+scp -r apache-storm-1.2.4 root@192.168.1.7:/root
+```
+
 ### 启动zookeeper集群
 在每台主机上执行
 ```
@@ -40,3 +50,25 @@ send.py
 jps，kill
 lsof -i :8080，kill
 - 停止zookeeper zkServer.sh stop
+```
+ps -aux | grep nimbus
+ps -aux | grep supervisor
+ps -aux | grep ui
+ps -aux | grep logviewer
+ps -aux | grep drpc
+```
+
+### git?
+
+```
+git branch testing # new branch
+git log --oneline --decorate --graph --all # view
+git checkout testing # switch to branch
+git commit -a -m 'msg' # add + commit
+
+git commit, git commit
+git merge
+手动编辑
+git add
+git commit
+```
