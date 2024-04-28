@@ -1,0 +1,18 @@
+-- 创建数据库
+CREATE DATABASE IF NOT EXISTS ptm;
+
+-- 使用数据库
+USE ptm;
+
+CREATE TABLE IF NOT EXISTS model2 (
+    modelId STRING,
+    pipeline_tag STRING,
+    likes INT,
+    downloads INT,
+    datasets ARRAY<STRING>
+)
+PARTITIONED BY (author STRING, library_name STRING)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+COLLECTION ITEMS TERMINATED BY '|'
+STORED AS TEXTFILE;
