@@ -3,13 +3,13 @@ import json
 import time
 
 # Kafka server address
-bootstrap_servers = 'localhost:9092'
+bootstrap_servers = 'slave2:9092'
 
 # Create Kafka producer
 producer = KafkaProducer(bootstrap_servers=bootstrap_servers)
 
 # JSON array file path
-json_file = 'sample.json'
+json_file = 'hf_metadata_small.json'
 
 # Topic to send messages to
 topic = 'json_data'

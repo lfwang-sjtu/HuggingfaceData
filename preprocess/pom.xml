@@ -9,35 +9,125 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.apache.storm/storm-core -->
         <dependency>
             <groupId>org.apache.storm</groupId>
             <artifactId>storm-core</artifactId>
-            <version>1.2.4</version>
-            <scope>${provided.scope}</scope>
+            <version>1.2.3</version>
+            <scope>provided</scope>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
+        <!-- Kafka clients -->
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
-            <version>3.7.0</version>
+            <version>2.4.1</version> <!-- 这里的版本号可以根据你的需要进行调整 -->
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.storm/storm-kafka -->
         <dependency>
             <groupId>org.apache.storm</groupId>
-            <artifactId>storm-kafka</artifactId>
-            <version>1.2.4</version>
-            <scope>provided</scope>
+            <artifactId>storm-kafka-client</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.storm/storm-core -->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.storm</groupId>-->
+<!--            <artifactId>storm-core</artifactId>-->
+<!--            <version>2.6.0</version>-->
+<!--            <scope>provided</scope>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.slf4j</groupId>-->
+<!--                    <artifactId>slf4j-api</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.kafka</groupId>-->
+<!--            <artifactId>kafka-clients</artifactId>-->
+<!--            <version>3.7.0</version>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.slf4j</groupId>-->
+<!--                    <artifactId>slf4j-api</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/org.apache.storm/storm-kafka -->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.storm</groupId>-->
+<!--            <artifactId>storm-kafka</artifactId>-->
+<!--            <version>2.6.0</version>-->
+<!--            <scope>compile</scope>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.slf4j</groupId>-->
+<!--                    <artifactId>slf4j-api</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka -->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.kafka</groupId>-->
+<!--            <artifactId>kafka_2.13</artifactId>-->
+<!--            <version>3.7.0</version>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.slf4j</groupId>-->
+<!--                    <artifactId>slf4j-api</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20240303</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-jdbc</artifactId>
+            <version>3.1.2</version>
         </dependency>
 
     </dependencies>
 
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>org.example.KafkaJsonTopology</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
